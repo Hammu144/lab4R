@@ -84,13 +84,45 @@ linreg <- setRefClass("linreg",
                         },
 
                         summary = function(){
-                          mod_object <- lm(.self$formula, data = .self$data)
-                          print(mod_object)
+                          v1 <- .self$hat_B
+                          v2 <-sqrt(abs(diag(.self$hat_var_hat_B)))
+                          v3 <- .self$t_B
+                          v4 <- c()
+                          for(i in 1:length(.self$t_B)){
+                            p = pt(.self$t_B[i], .self$df, , lower.tail = FALSE, log.p = FALSE)
+                            if((p < 0.01) & (p < 0.05)){v4 <- append(v4,"***")}
+                            else if((p > 0.01) & (p < 0.05)){v4 <-append(v4,"**")}
+                            else if((p > 0.05) & (p < 0.05)){v4 <-append(v4,"*")}
+                            else {v4 <-append(v4," ")}
+
+                          }
+                           m <- matrix(c(v1,v2,v3,v4 ),nrow = 3, ncol = 4, byrow = FALSE)
+
+                           rownames(m)<-
+                             c("Intercept", "Speciesversicolor", "Speciesvirginica")
+                           # for (i in 1:nrow(m)) {
+                           #   cat(rownames(m)[i]," ")
+                           #   cat(m[i,])
+                           #   cat("\n")
+                           # }
+                           print(m)
+
+                           cat(paste0("Residual standard error: ", sqrt(.self$hat_var_2), " on ", .self$df , " degrees of freedom"))
+
+                        },
+                        print = function(){
+                        n_formula <- as.character(.self$formula)
+                        cat(paste0("lm(formula =" ,n_formula[2], " " , n_formula[1], " " ,n_formula[3], " data = iris)"))
+
+                        cat(paste0(rownames(.self$hat_B), "/n"))
+                        cat(paste0(hat_B))
+
+
+
                         }
 
 
 
                       )
 )
-
 
