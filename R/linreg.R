@@ -33,17 +33,17 @@ linreg <- setRefClass("linreg",
                       ),
                       methods = list(
                         initialize = function(formula, data){
-                          .self$x <-  model.matrix(formula, data)
-                          .self$y <-  data[[formula[[2]]]]
                           .self$data <- data
                           .self$formula <-  formula
+                          .self$x <-  model.matrix(.self$formula, .self$data)
+                          .self$y <-  .self$data[[.self$formula[[2]]]]
                           n <- nrow(.self$x)
                           p <- ncol(.self$x)
                           .self$df <- n-p
                           .self$hat_B <- solve((t( .self$x)%*% .self$x))%*%t( .self$x)%*% .self$y
-                          .self$hat_y <- ( .self$x)%*%( .self$hat_B)
+                          .self$hat_y <- ( .self$x) %*% ( .self$hat_B)
                           .self$hat_e <-  .self$y -  .self$hat_y
-                          .self$hat_var_2 <- (t(.self$hat_e)%*%.self$hat_e)/.self$df
+                          .self$hat_var_2 <- (t(.self$hat_e)%*%.self$hat_e) / .self$df
 
                           .self$hat_var_hat_B <- ((.self$hat_var_2)^(2))[1,1] * (solve(t(.self$x)%*%.self$x))
 
@@ -89,7 +89,7 @@ linreg <- setRefClass("linreg",
                           v3 <- .self$t_B
                           v4 <- c()
                           for(i in 1:length(.self$t_B)){
-                            p = pt(.self$t_B[i], .self$df, , lower.tail = FALSE, log.p = FALSE)
+                            p = pt(.self$t_B[i], .self$df, lower.tail = FALSE, log.p = FALSE)
                             if((p < 0.01) & (p < 0.05)){v4 <- append(v4,"***")}
                             else if((p > 0.01) & (p < 0.05)){v4 <-append(v4,"**")}
                             else if((p > 0.05) & (p < 0.05)){v4 <-append(v4,"*")}
@@ -97,17 +97,15 @@ linreg <- setRefClass("linreg",
 
                           }
                            m <- matrix(c(v1,v2,v3,v4 ),nrow = 3, ncol = 4, byrow = FALSE)
-
-                           rownames(m)<-
+                           rownames(m) <-
                              c("Intercept", "Speciesversicolor", "Speciesvirginica")
-                           # for (i in 1:nrow(m)) {
-                           #   cat(rownames(m)[i]," ")
-                           #   cat(m[i,])
-                           #   cat("\n")
-                           # }
-                           print(m)
+                           colnames(m) <-
+                             c("Estimate", "Std.Error", "t value", "pr(>|t|)")
+                           return(m)
 
-                           cat(paste0("Residual standard error: ", sqrt(.self$hat_var_2), " on ", .self$df , " degrees of freedom"))
+
+
+                          cat(paste0("Residual standard error: ", sqrt(.self$hat_var_2), " on ", .self$df , " degrees of freedom"))
 
                         },
                         print = function(){
@@ -125,4 +123,13 @@ linreg <- setRefClass("linreg",
 
                       )
 )
+
+
+
+# data(iris)
+# mod_object <- lm(Petal.Length~Species, data = iris)
+# print(mod_object)
+# summary(mod_object)
+#
+#
 
