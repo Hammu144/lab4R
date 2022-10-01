@@ -24,7 +24,7 @@ Linreq
 
 \item{\code{hat_e}}{matrix.}
 
-\item{\code{df}}{integer.}
+\item{\code{df}}{numeric}
 
 \item{\code{hat_var_2}}{matrix.}
 
