@@ -1,5 +1,8 @@
 #' Linreq
-#' This RC class linreg contain different functions. print(), summary(), coef(), resid(), plot().
+#' @description This RC class linreg contain different
+#' functions. print(), summary(), coef(), resid(), plot(). we can made different objects from this
+#' RC class.
+#'
 #'
 #'
 #'
