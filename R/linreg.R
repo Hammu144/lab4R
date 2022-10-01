@@ -1,4 +1,6 @@
 #' Linreq
+#' This RC class linreg contain different functions. print(), summary(), coef(), resid(), plot().
+#'
 #'
 #'
 #' @field x matrix.
@@ -13,7 +15,7 @@
 #' @field formula formula.
 #' @field t_B numeric.
 #'
-#' @return Linear Regresion
+#' @return Object of linreg
 #' @export linreg
 #' @exportClass linreg
 #' @importFrom methods new setRefClass

@@ -4,12 +4,14 @@
 \name{linreg-class}
 \alias{linreg-class}
 \alias{linreg}
-\title{Linreq}
+\title{Linreq
+This RC class linreg contain different functions. print(), summary(), coef(), resid(), plot().}
 \value{
-Linear Regresion
+Object of linreg
 }
 \description{
 Linreq
+This RC class linreg contain different functions. print(), summary(), coef(), resid(), plot().
 }
 \section{Fields}{
 

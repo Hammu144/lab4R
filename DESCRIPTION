@@ -2,8 +2,11 @@ Package: Linreg
 Title: Compute Regression Model
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    c( person("hamza", "munir", , "hamzamunir00@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID")), 
+            person("collins", "sklinsmann", , "collinsklinsmann@gmail.com", role = "ctb",
            comment = c(ORCID = "YOUR-ORCID-ID"))
+           )
 Description: Linreg Class To Compute Regression Model.
 License: MIT + file LICENSE
 Encoding: UTF-8
