@@ -1,5 +1,6 @@
 #' Linreq
 #'
+#'
 #' @field x matrix.
 #' @field y numeric.
 #' @field hat_B matrix.
