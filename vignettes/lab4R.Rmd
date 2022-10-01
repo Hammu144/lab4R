@@ -1,0 +1,59 @@
+---
+title: "lab4R"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{lab4R}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Linreg)
+```
+Here i have initialize the object for the class.
+
+```{r }
+
+l1 <-  linreg$new(Petal.Length~Species, data = iris)
+```
+
+In this method we return the vector of e^.
+
+```{r }
+l1$resid()
+```
+
+In this method we return the predicted value of Y.
+
+```{r }
+l1$pred()
+```
+In this method we return the coefficient as a named Vector.
+
+
+```{r }
+l1$coef()
+```
+
+In this method we return output with a print method and that output is same as the output of lm() method.
+
+```{r }
+l1$summary()
+```
+In this method we print the Linreg object with our own defined print method.
+
+```{r }
+l1$print()
+```
+In the Plot() method we print two different Plots with the Linreg class Object.
+
+```{r }
+l1$plot()
+```
