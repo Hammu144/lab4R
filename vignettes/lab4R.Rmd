@@ -13,47 +13,57 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+# Description
+This package will use to find linear regeneration.
+package contains different functions whith the help of which we can perform our designer outputs.
+following are some functions
+which we used for calculating linear regression.
 
 ```{r setup}
 library(Linreg)
 ```
-Here i have initialize the object for the class.
+Package contain a RC class with name linreg with the help of linreg we will then use functionality and will make a object buy using function in a linreg class which is wiht name l1
+below is example of new object of RC class.
+
+Now after making new object from linreg class we will call different functions of RC class class which 
+are actually part of linear model.
 
 ```{r }
 
 l1 <-  linreg$new(Petal.Length~Species, data = iris)
 ```
-
-In this method we return the vector of e^.
+Below is first function which will return resid which is actually in model related to e_hat
+with the help of object we will call this function.
 
 ```{r }
 l1$resid()
 ```
 
-In this method we return the predicted value of Y.
+After residul we have another function of this RC class which is pred which will return predict values which is actually name by hat_y in model.
 
 ```{r }
 l1$pred()
 ```
-In this method we return the coefficient as a named Vector.
+coef() function gives us computed value perform on equation in Rc class.
 
 
 ```{r }
 l1$coef()
 ```
 
-In this method we return output with a print method and that output is same as the output of lm() method.
-
-```{r }
-l1$summary()
-```
-In this method we print the Linreg object with our own defined print method.
+print functions gives us some information which we have use for our linrag class.
 
 ```{r }
 l1$print()
 ```
-In the Plot() method we print two different Plots with the Linreg class Object.
+With the help of plot function we will get two plots residuals against fitted and a scale-location plot.
 
 ```{r }
 l1$plot()
+```
+
+Summary function will give us same value as we have in linear model it will return us summary of this RC class containg all the details of model.
+
+```{r }
+l1$summary()
 ```
